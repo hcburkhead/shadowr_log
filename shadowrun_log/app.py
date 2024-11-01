@@ -6,11 +6,11 @@ import re
 import signal
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  
+app.secret_key = os.getenv('FLASK_SECRET_KEY') 
 
 # Credentials
-USERNAME = 'username'
-PASSWORD = 'password'
+USERNAME = os.getenv('USERNAME')
+PASSWORD = os.getenv('PASSWORD')
 
 # Log directory
 log_directory = os.path.expanduser('~/Downloads/shadowrun_log/Casper Logs')
@@ -204,7 +204,7 @@ def combined_log():
                 elif line == '------------':
                     continue  # Ignore separator lines
                 elif line:
-                    # Assume it's a log entry
+                    # Assumes it's a log entry
                     match = re.match(r'\[(.*?)\]\s+UUID:\s*(.*?)\s*-\s*(.*)', line)
                     if match:
                         timestamp_str = match.group(1)
@@ -226,7 +226,7 @@ def combined_log():
         except FileNotFoundError:
             return jsonify({'sessions': []})
         except Exception as e:
-            # Log the exception for debugging purposes
+            # Log the exception
             print(f"Error parsing combined log: {e}")
             return jsonify({'sessions': []})
     else:
@@ -244,6 +244,7 @@ def exit_unix_mode():
 @app.route('/unix_command', methods=['POST'])
 def unix_command():
     if 'logged_in' in session and session.get('unix_mode'):
+        global logs  # Declares 'logs' as global
         command = request.form.get('command', '').strip()
 
         if command == 'help':
@@ -256,15 +257,17 @@ def unix_command():
         elif command == 'checkLog':
             # Return the last 10 logs
             last_logs = logs[-10:] if len(logs) >= 10 else logs
-            output = '\n'.join([f"[{log['timestamp']}] {log['message']}" for log in last_logs])
+            if last_logs:
+                output = '\n'.join([f"[{log['timestamp']}] {log['message']}" for log in last_logs])
+            else:
+                output = 'No logs available.'
             return jsonify({'output': output})
         elif command.startswith('deleteLog'):
             # Delete a log by UUID
             parts = command.split()
             if len(parts) == 2:
                 log_id = parts[1]
-                # Delete from current session
-                global logs
+                # Delete from current session logs
                 logs = [log for log in logs if log['id'] != log_id]
 
                 # Delete from combined log
@@ -291,7 +294,7 @@ def shutdown():
         if request.environ.get('werkzeug.server.shutdown'):
             shutdown_server()
         else:
-            # Fallback: force kill the process if Werkzeug shutdown isn't available
+            # if Werkzeug shutdown isn't available kill process
             os.kill(os.getpid(), signal.SIGTERM)
         return 'Server shutting down...'
     else:
