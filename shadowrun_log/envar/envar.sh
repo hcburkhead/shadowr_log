@@ -1,2 +1,2 @@
-USERNAME = 'username'
-PASSWORD = 'password'
+echo USERNAME = 'username'
+echo PASSWORD = 'password'
