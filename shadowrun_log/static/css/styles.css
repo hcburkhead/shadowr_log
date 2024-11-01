@@ -1,0 +1,478 @@
+/* styles.css */
+
+/* ----------------------------
+   Import Pixter Terminal Bold Font
+---------------------------- */
+@font-face {
+    font-family: 'Pixter Terminal Bold';
+    src: url('/static/fonts/pixter-terminal-bold.ttf') format('truetype');
+}
+
+/* ----------------------------
+   Global Styles
+---------------------------- */
+body {
+    background-color: #000;
+    color: #006400; /* Dark Green */
+    font-family: 'Pixter Terminal Bold', 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+    font-size: 18px;
+}
+
+/* ----------------------------
+   Container Styling
+---------------------------- */
+.container {
+    text-align: center;
+    border: 2px solid #006400;
+    padding: 20px;
+    width: 85%;
+    height: 85%;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px #006400;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+/* ----------------------------
+   Title Styling
+---------------------------- */
+.title {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Pixter Terminal Bold';
+    font-size: 36px;
+    text-shadow: 0 0 50px #006400, 0 0 25px #006400;
+}
+
+/* ----------------------------
+   Input Container
+---------------------------- */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the form horizontally */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#log-form {
+    display: flex;
+    align-items: center;
+}
+
+#log-input {
+    width: 300px;
+    padding: 10px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    font-family: 'Pixter Terminal Bold', monospace;
+    font-size: 18px;
+    box-shadow: 0 0 10px #006400;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+}
+
+#log-input:focus {
+    outline: none;
+}
+
+/* Log Button */
+#log-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    cursor: pointer;
+    font-family: 'Pixter Terminal Bold';
+    font-size: 18px;
+    box-shadow: 0 0 10px #006400;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+}
+
+#log-button:hover {
+    background-color: #004d00; /* Darker Green on Hover */
+    color: #000;
+}
+
+/* ----------------------------
+   Buttons Group
+---------------------------- */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    padding: 15px 30px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    cursor: pointer;
+    font-family: 'Pixter Terminal Bold';
+    font-size: 20px;
+    box-shadow: 0 0 10px #006400;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+    margin: 5px;
+}
+
+.button-group button:hover {
+    background-color: #004d00; /* Darker Green on Hover */
+    color: #000;
+}
+
+/* End Session Button */
+#end-session-button {
+    width: 100%;
+    font-size: 22px;
+    padding: 20px;
+}
+
+/* Return to Log Button */
+#return-log-button {
+    margin-top: 10px;
+    font-size: 20px;
+    display: none; /* Initially hidden */
+}
+
+/* ----------------------------
+   Combined Log Container
+---------------------------- */
+#combined-log-container {
+    border: 1px solid #006400;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    font-family: 'Pixter Terminal Bold', monospace;
+}
+
+/* Individual Log Entries */
+.log-entry {
+    color: #006400;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Log Message Styling */
+.log-message {
+    text-align: left;
+    flex-grow: 1;
+}
+
+/* Separator */
+.separator {
+    margin: 10px 0;
+    border-bottom: 1px solid #006400;
+}
+
+/* ----------------------------
+   Session Info Container
+---------------------------- */
+#session-info-container {
+    margin-top: 10px;
+}
+
+/* Session Title */
+#session-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    color: #006400;
+    text-shadow: 0 0 10px #006400, 0 0 20px #006400;
+    margin-bottom: 10px;
+}
+
+/* ----------------------------
+   Pagination Styling
+---------------------------- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #006400;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+    text-align: center;
+}
+
+.pagination-button {
+    padding: 10px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    font-family: 'Pixter Terminal Bold';
+    font-size: 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination-button:hover {
+    background-color: #004d00;
+    color: #000;
+}
+
+/* ----------------------------
+   Modal Styles
+---------------------------- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #000;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 2px solid #006400;
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: #006400;
+    font-family: 'Pixter Terminal Bold', monospace;
+    text-shadow: 0 0 5px #006400, 0 0 10px #006400;
+    box-shadow: 0 0 10px #006400;
+    position: relative;
+}
+
+.close {
+    color: #006400;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #004d00;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ----------------------------
+   Styling for Termination GIF
+---------------------------- */
+#terminated-gif {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1000;
+    animation: playOnce forwards; /* Play the GIF once */
+}
+
+@keyframes playOnce {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ----------------------------
+   Login Form Styling
+---------------------------- */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    font-family: 'Pixter Terminal Bold', monospace;
+    font-size: 18px;
+}
+
+#login-form button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    cursor: pointer;
+    font-family: 'Pixter Terminal Bold';
+    font-size: 18px;
+}
+
+#login-form button:hover {
+    background-color: #004d00;
+    color: #000;
+}
+
+.error {
+    color: red;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Unix Mode Checkbox */
+#login-form label {
+    color: #006400;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* ----------------------------
+   Unix Terminal Styles
+---------------------------- */
+.unix-terminal {
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Pixter Terminal Bold', monospace;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.terminal-input {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    margin-right: 10px;
+}
+
+#terminal-command {
+    flex-grow: 1;
+    background-color: #000;
+    color: #0f0;
+    border: none;
+    font-family: 'Pixter Terminal Bold', monospace;
+    font-size: 18px;
+}
+
+#terminal-command:focus {
+    outline: none;
+}
+
+/* ----------------------------
+   Dice Roller Styles
+---------------------------- */
+#dice-count {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    font-family: 'Pixter Terminal Bold', monospace;
+    font-size: 18px;
+}
+
+#roll-button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #006400;
+    border: 2px solid #006400;
+    cursor: pointer;
+    font-family: 'Pixter Terminal Bold';
+    font-size: 18px;
+}
+
+#roll-button:hover {
+    background-color: #004d00;
+    color: #000;
+}
+
+#dice-result {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* ----------------------------
+   Edit Button Styling
+---------------------------- */
+.edit-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: #006400; /* Dark green */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pixter Terminal Bold', monospace;
+}
+
+.edit-button::before {
+    content: '\270E'; /* Unicode code for pencil icon */
+}
+
+.edit-button:hover {
+    color: #004d00;
+}
+
+/* ----------------------------
+   Adjustments for Terminal Output
+---------------------------- */
+.terminal-output div {
+    margin-bottom: 5px;
+}
+
+/* ----------------------------
+   Adjustments for Modal Content
+---------------------------- */
+.modal-content input,
+.modal-content button {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.modal-content #dice-count {
+    width: 80%;
+}
+
+.modal-content #dice-result {
+    text-align: center;
+}
+

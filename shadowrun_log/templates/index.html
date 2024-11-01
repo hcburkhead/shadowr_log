@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Casper Log Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if not unix_mode %}
+        <!-- Classic Interface -->
+        <h1 class="title">Casper Log</h1>
+
+        <!-- Standard Log Entry Form -->
+        <div class="input-container">
+            <form id="log-form">
+                <input type="text" id="log-input" placeholder="Enter log message">
+                <button type="submit" id="log-button">Log</button>
+            </form>
+        </div>
+
+        <!-- Buttons for actions -->
+        <div class="button-group">
+            <button id="check-logs-button">Check Logs</button>
+            <button id="tools-button">Tools</button>
+            <button id="return-log-button">Return to Log</button>
+            <button id="end-session-button">End Session</button>
+        </div>
+
+        <!-- Containers for logs -->
+        <div id="combined-log-container"></div>
+
+        <!-- Session Titles and Pagination -->
+        <div id="session-info-container">
+            <div id="session-title"></div>
+            <div id="pagination-div" class="pagination"></div>
+        </div>
+
+        <!-- Terminated GIF -->
+        <img id="terminated-gif" src="{{ url_for('static', filename='images/Terminated.gif') }}" alt="Terminated">
+
+        <!-- Modal Dialog for Tools -->
+        <div id="tools-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Dice Roller</h2>
+                <!-- Dice Roll Logic -->
+                <input type="number" id="dice-count" placeholder="Number of Dice" min="1">
+                <button id="roll-button">Roll</button>
+                <div id="dice-result"></div>
+            </div>
+        </div>
+        {% else %}
+        <!-- Unix Terminal -->
+        <div id="unix-terminal" class="unix-terminal">
+            <div id="terminal-output" class="terminal-output"></div>
+            <div class="terminal-input">
+                <span class="prompt">$</span>
+                <input type="text" id="terminal-command" autocomplete="off" autofocus>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Include the main JavaScript file -->
+    <script>
+        // Pass the Unix Mode status from Flask to JavaScript
+        const unixModeEnabled = "{{ 'true' if unix_mode else 'false' }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

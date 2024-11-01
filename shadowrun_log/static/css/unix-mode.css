@@ -1,0 +1,81 @@
+/* Unix theme with Pixter Terminal Bold and Black/Green theme */
+@font-face {
+    font-family: 'Pixter Terminal Bold';
+    src: url('/static/fonts/pixter-terminal-bold.ttf') format('truetype');
+}
+
+body {
+    background-color: #000; /* Black background */
+    color: #006400; /* Dark Green text */
+    font-family: 'Pixter Terminal Bold', monospace; /* Use Pixter Terminal Bold */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Terminal Box */
+#terminal-box {
+    width: 90%;
+    height: 90vh;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid #006400;
+    background-color: #000; /* Black background */
+    box-shadow: 0 0 10px #006400; /* Green shadow for terminal box */
+}
+
+/* Terminal Output */
+#terminal-output {
+    height: 85%; /* Leaves space for input box */
+    overflow-y: auto;
+    background-color: #000;
+    padding: 10px;
+    color: #006400; /* Dark Green for terminal output text */
+    font-family: 'Pixter Terminal Bold', monospace; /* Use Pixter font */
+    border-bottom: 2px solid #006400; /* Green border separating the output and input */
+}
+
+/* Terminal Input */
+#terminal-input {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    border: none;
+    color: #006400; /* Dark Green for terminal input */
+    font-size: 18px;
+    font-family: 'Pixter Terminal Bold', monospace;
+    border-top: 2px solid #006400;
+    box-shadow: 0 0 10px #006400;
+}
+
+#terminal-input:focus {
+    outline: none; /* Remove focus outline */
+}
+
+/* Terminal Placeholder Text Color */
+#terminal-input::placeholder {
+    color: #004d00; /* Slightly darker green for the placeholder */
+}
+
+/* Terminal Output Command Text */
+.terminal-command {
+    color: #33ff33; /* Brighter green for entered commands */
+}
+
+/* Terminal Error/Message Text */
+.terminal-error {
+    color: #ff0000; /* Red text for errors or invalid commands */
+}
+
+/* Terminal Success/Info Messages */
+.terminal-info {
+    color: #006400; /* Dark Green for info messages */
+    font-style: italic;
+}
+
+/* Terminal Help Text */
+.terminal-help {
+    color: #00ff00; /* Bright green for help text */
+}
